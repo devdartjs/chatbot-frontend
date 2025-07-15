@@ -22,7 +22,11 @@ function ChatMessage(props) {
           <img
             src={isUser ? "/user.svg" : "/bot.svg"}
             alt={isUser ? "user-icon" : "bot-icon"}
-            className="w-10 h-10 rounded-full shadow-md"
+            className={
+              isUser
+                ? "w-10 h-10 rounded-full shadow-md mr-8"
+                : "w-10 h-10 rounded-full shadow-md"
+            }
           />
           <p
             className={`p-3 rounded-2xl text-sm shadow-md leading-relaxed ${
@@ -34,7 +38,13 @@ function ChatMessage(props) {
             {message}
           </p>
         </div>
-        <span className="text-xs text-gray-100">{time}</span>
+        <span
+          className={
+            isUser ? "text-xs text-gray-100 mr-9" : "text-xs text-gray-100 ml-2"
+          }
+        >
+          {time}
+        </span>
       </div>
     </div>
   );

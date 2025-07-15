@@ -1,15 +1,17 @@
 import { useState } from "react";
 
-function Input() {
+function Input({ onSend }) {
   const [inputText, setInputText] = useState("");
 
   const handleInputChange = (e) => {
     setInputText(e.target.value);
-    console.log(inputText, e.target.value);
   };
 
   function sendMessage() {
-    console.log(inputText);
+    if (!inputText.trim()) return;
+
+    onSend(inputText.trim());
+    setInputText("");
   }
 
   return (
@@ -18,6 +20,7 @@ function Input() {
         type="text"
         placeholder="Send Your Message Here"
         size={30}
+        value={inputText}
         onChange={handleInputChange}
         className="flex-1 px-4 py-2 text-sm text-slate-700 placeholder-slate-600 bg-slate-100 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
