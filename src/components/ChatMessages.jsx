@@ -1,6 +1,7 @@
-import { useState, useRef, useEffect } from "react"; // atualizado
+import { useState, useRef, useEffect } from "react";
 import ChatMessage from "./ChatMessage";
 import Input from "./Input.jsx";
+import openAiRequest from "../utils/openAI.js";
 
 function ChatMessages() {
   const [chatMessages, setChatMessages] = useState([
@@ -22,16 +23,28 @@ function ChatMessages() {
 
     setChatMessages((prev) => [...prev, newMsgObj]);
 
-    setTimeout(() => {
-      setChatMessages((prev) => [
-        ...prev,
-        {
-          message: "This is a bot reply",
-          sender: "robot",
-          id: prev.length + 1,
-        },
-      ]);
-    }, 1000);
+    openAiRequest(newMessage)
+      .then((response) => {
+        setChatMessages((prev) => [
+          ...prev,
+          {
+            message: response,
+            sender: "robot",
+            id: `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+          },
+        ]);
+      })
+      .catch((error) => {
+        console.error("Error fetching response from OpenAI:", error);
+        setChatMessages((prev) => [
+          ...prev,
+          {
+            message: "Sorry, I couldn't process your request.",
+            sender: "robot",
+            id: `${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+          },
+        ]);
+      });
   };
 
   return (
