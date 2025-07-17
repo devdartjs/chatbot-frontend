@@ -4,7 +4,8 @@ const openAiRequest = async (message) => {
       throw new Error("Invalid message format");
     }
 
-    const response = await fetch("http://localhost:3000/chat", {
+    //for consuming AI please check the backend repository for documentation and use URL: http://localhost:3050/chatAI for development
+    const response = await fetch("http://localhost:3050/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

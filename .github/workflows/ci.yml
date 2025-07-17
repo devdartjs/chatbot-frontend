@@ -1,0 +1,48 @@
+name: CI - Chatbot Frontend
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run tests
+        run: bun run test
+
+      - name: Build project
+        run: bun run build
+
+      - name: Build Docker image
+        run: docker build -t chatbot-frontend .
+
+      - name: Login to Docker Hub (optional)
+        if: github.ref == 'refs/heads/main' && success()
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+        run: |
+          echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+
+      - name: Push Docker image (optional)
+        if: github.ref == 'refs/heads/main' && success()
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        run: |
+          docker tag chatbot-frontend $DOCKER_USERNAME/chatbot-frontend:latest
+          docker push $DOCKER_USERNAME/chatbot-frontend:latest
