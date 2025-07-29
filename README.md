@@ -1,4 +1,4 @@
-# AI Chatbot Frontend Template Ready for Integration
+# 🟢 AI Chatbot Frontend Template Ready for Integration
 
 A ready-to-use frontend template for an AI chatbot interface built with modern technologies. This frontend seamlessly integrates with a backend API (such as the provided **Bun** + **Elysia** backend) and features **React**, **Tailwind CSS**, **Vite**, **TypeScript**, and **Vitest** for testing. The project is containerized with **Docker** for easy deployment. The backend template is also available separately in this **GitHub** repository.
 
@@ -6,7 +6,7 @@ A ready-to-use frontend template for an AI chatbot interface built with modern t
 
 ---
 
-## 📚 Table of Contents
+## 🔵 Table of Contents
 
 - [Features](#features)
 - [Tech Stack](#tech-stack)
@@ -17,7 +17,7 @@ A ready-to-use frontend template for an AI chatbot interface built with modern t
 
 ---
 
-## 🚀 Features
+## 🟠 Features
 
 - 💬 Responsive React UI with chat interface
 - 🎨 Styled with Tailwind CSS for rapid UI development
@@ -28,7 +28,7 @@ A ready-to-use frontend template for an AI chatbot interface built with modern t
 
 ---
 
-## ⚙️ Tech Stack
+## 🟡 Tech Stack
 
 - [Bun](https://bun.sh/) (runtime and package manager)
 - [Vite](https://vitejs.dev/) (build tool)
@@ -40,7 +40,7 @@ A ready-to-use frontend template for an AI chatbot interface built with modern t
 
 ---
 
-## 🛠️ Getting Started
+## 🟣 Getting Started
 
 ### Frontend Setup
 
@@ -51,13 +51,13 @@ bun install
 bun run dev
 ```
 
-### 🧩 Customization
+### ⚪ Customization
 
 Modify UI components inside /src/components/
 Update API utility functions inside /src/utils/
 Extend Tailwind styles in tailwind.config.js
 
-### 🧩 🤝 Contributing
+### ⚪ 🤝 Contributing
 
 Contributions are welcome! Here's how you can help:
 Fork the project
@@ -67,7 +67,7 @@ Push to the branch (git push origin feature/chat-logging)
 
 Open a Pull Request
 
-### 📄 License
+### ⚪ License
 
 This project is licensed under the MIT License.
 See the LICENSE file for details.
