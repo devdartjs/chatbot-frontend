@@ -4,10 +4,9 @@ import ChatMessages from "./components/ChatMessages.jsx";
 function App() {
   return (
     <div>
-      <ChatMessages />;
+      <ChatMessages />
     </div>
   );
 }
 
 export default App;
-//
